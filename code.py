@@ -6,7 +6,6 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestClassifier
 import seaborn as sns
 
-
 # Loading the data
 data = pd.read_csv('customer_service.csv',encoding='utf-8')
 
@@ -20,12 +19,10 @@ data = pd.read_csv('customer_service.csv',encoding='utf-8')
 x = data.drop('custcat', axis=1)
 y = data['custcat']
 
-
 plt.style.use('ggplot') # makes somewhat good
 
 # sns.FacetGrid(data, hue="custcat").map(plt.scatter, "address", "region").add_legend()  # can be useful
 # plt.show()
-
 
 # finding correlation between between parameters
 plt.figure(figsize=(5, 5))
@@ -55,5 +52,4 @@ print(confusion_matrix(y_test, model.predict(x_test)))
 
 # plotting importances
 (pd.Series(model.feature_importances_, index=x.columns).nlargest(x.shape[1]).plot(kind='bar', color='green'))
-
 plt.show()
